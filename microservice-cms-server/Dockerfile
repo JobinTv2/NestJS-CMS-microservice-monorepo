@@ -1,42 +1,18 @@
-# FROM node:18-alpine 
 
-# WORKDIR /usr/src/app
+FROM node:18-alpine As development
 
-# COPY package*.json ./
+USER node
 
-# RUN npm install
+WORKDIR /home/node
 
-# # RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
+COPY --chown=node:node package*.json ./
 
-# COPY . .
-
-# USER node
+RUN npm ci
 
 
-# RUN npm run build
+COPY --chown=node:node . .
 
-# EXPOSE 8080
-
-# CMD ["node", "dist/main.js"]
-
-FROM node:12
-
-# Create app directory, this is in our container/in our image
-WORKDIR /usr/src/app
-
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
-
-RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
-
-# Bundle app source
-COPY . .
 
 RUN npm run build
 
-EXPOSE 8080
-CMD [ "node", "dist/main" ]
+CMD ["node", "dist/main.js"]
