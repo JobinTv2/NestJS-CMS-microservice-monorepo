@@ -7,12 +7,11 @@ WORKDIR /home/node
 
 COPY --chown=node:node package*.json ./
 
-RUN npm ci
+RUN npm i
 
 
 COPY --chown=node:node . .
 
-EXPOSE 8000
 
 RUN npm run build
 

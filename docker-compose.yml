@@ -2,4 +2,8 @@ version: '3'
 services:
     gateway:
       build: ./microservice-cms-server/ 
+      ports:
+      - "8000:8000"
+    microservice-cms:
+      build: ./microservice-cms-client/ 
    
