@@ -7,8 +7,8 @@ dotenv.config();
 const microserviceOptions = {
   transport: Transport.REDIS,
   options: {
-    host: 'localhost',
     port: 6379,
+    host: process.env.REDIS_HOST,
   },
 };
 

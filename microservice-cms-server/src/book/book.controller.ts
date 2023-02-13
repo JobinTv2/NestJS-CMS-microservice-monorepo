@@ -30,7 +30,7 @@ export class BookController {
     @InjectQueue('file-upload-queue') private fileQueue: Queue,
   ) {}
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get('/form')
   getBookTradeForm() {
     return this.bookService.getBookTradeForm();

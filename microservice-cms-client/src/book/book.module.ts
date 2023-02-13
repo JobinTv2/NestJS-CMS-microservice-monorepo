@@ -6,7 +6,7 @@ import * as redisStrore from 'cache-manager-redis-store';
   imports: [
     CacheModule.register({
       store: redisStrore,
-      socket: { host: 'localhost', port: 6379 },
+      socket: { port: 6379, host: 'redis-server' },
     }),
   ],
   controllers: [BookController],

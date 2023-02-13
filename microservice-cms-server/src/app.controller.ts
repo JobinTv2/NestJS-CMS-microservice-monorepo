@@ -29,7 +29,7 @@ export class AppController {
 
   // @SkipThrottle()
   // @Throttle(3, 10)
-  @Post('test')
+  @Get('test')
   async create(@Body() dto: string) {
     return 'Response';
   }

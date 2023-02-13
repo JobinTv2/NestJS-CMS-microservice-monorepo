@@ -14,6 +14,7 @@ async function bootstrap() {
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(new LoggingInerceptor());
+
   app.enableVersioning({
     type: VersioningType.MEDIA_TYPE,
     key: 'v=',

@@ -19,11 +19,11 @@ services:
         ports:
             - "8080:3000"
 
-    postgres:
-        image: postgres:10.4
-        ports:
-            - "35000:5432"
-        environment: 
-            POSTGRES_USER: user
-            POSTGRES_PASSWORD: password
-            POSTGRES_DB: db
+    # postgres:
+    #     image: postgres:10.4
+    #     ports:
+    #         - "35000:5432"
+    #     environment: 
+    #         POSTGRES_USER: user
+    #         POSTGRES_PASSWORD: password
+    #         POSTGRES_DB: db

@@ -3,7 +3,63 @@ services:
     gateway:
       build: ./microservice-cms-server/ 
       ports:
-      - "8000:8000"
+        - "8080:3000"
+      # links:
+      # - redis-server
+      depends_on: 
+       - redis
+      networks:
+       - default
+      # network_mode: host
     microservice-cms:
       build: ./microservice-cms-client/ 
-   
+      depends_on: 
+       - redis
+       - gateway
+      links:
+       - redis
+      networks:
+       - default
+    microservice-db:
+      build: ./microservice-db-client/ 
+      depends_on: 
+       - redis
+       - gateway
+      links:
+       - redis
+      networks:
+       - default
+    redis:
+      image: "redis:alpine"
+      command: redis-server
+      ports:
+        - "6379:6379"
+      expose:
+        - 6379
+      # network:
+      #  - default
+    # redis-server:
+    #    image: redis
+    #    ports:
+    #        - "6379:6379"
+    #    expose:
+    #      - 6379
+    #    volumes: 
+    #      - redis:/data
+      #  networks:
+      #       - my-net
+    # redis-commander:
+    #   image: rediscommander/redis-commander:latest
+    #   environment:
+    #     - reddis-server:redis:6379
+    #   ports:
+    #     - '8081:8081'
+    #   depends_on:
+    #     - redis-server
+    #   networks:
+    #         - my-net
+# volumes:
+#   redis:
+#     driver: local  
+networks:
+    default:
