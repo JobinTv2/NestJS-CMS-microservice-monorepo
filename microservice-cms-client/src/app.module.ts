@@ -8,10 +8,10 @@ import * as redisStrore from 'cache-manager-redis-store';
 @Module({
   imports: [
     BookModule,
-    CacheModule.register({
-      store: redisStrore,
-      socket: { host: process.env.REDIS_HOST, port: 6379 },
-    }),
+    // CacheModule.register({
+    //   store: redisStrore,
+    //   socket: { host: process.env.REDIS_HOST, port: 6379 },
+    // }),
   ],
   controllers: [AppController, BookController],
   providers: [AppService, BookService],

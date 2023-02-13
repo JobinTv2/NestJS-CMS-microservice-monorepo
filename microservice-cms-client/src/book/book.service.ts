@@ -4,12 +4,12 @@ import { Cache } from 'cache-manager';
 import Redis from 'ioredis';
 
 const redis = new Redis({
+  host: 'redis',
   port: 6379,
-  host: process.env.REDIS_HOST,
 });
 @Injectable()
 export class BookService {
-  constructor(@Inject(CACHE_MANAGER) private readonly cacheManager: Cache) {}
+  constructor() {}
 
   async getForm() {
     const data = await this.getOrSetCache('book/form', async () => {

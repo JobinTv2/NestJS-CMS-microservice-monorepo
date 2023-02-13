@@ -6,10 +6,14 @@ dotenv.config();
 
 const microserviceOptions = {
   transport: Transport.REDIS,
-  options: {
+   options: {
+    host: 'redis',
     port: 6379,
-    host: process.env.REDIS_HOST,
   },
+  // options: {
+  //   port: 6379,
+  //   host: process.env.REDIS_HOST,
+  // },
 };
 
 async function bootstrap() {
