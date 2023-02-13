@@ -5,9 +5,6 @@ services:
         build:
             dockerfile: Dockerfile
             context: .
-        environment: 
-            REDIS_HOST: redis
-            REDIS_PORT: 6379
     # redis-server:
     #    image: redis:latest  
     #    ports:
