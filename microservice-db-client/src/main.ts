@@ -8,8 +8,8 @@ import { ValidationPipe } from '@nestjs/common';
 const microserviceOptions = {
   transport: Transport.REDIS,
   options: {
-    host: 'redis',
-    port: 6379,
+    host: String(process.env.REDIS_HOST),
+    port: Number(process.env.REDIS_PORT),
   },
 };
 
